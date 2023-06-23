@@ -1,12 +1,7 @@
 const router = require('express').Router()
 
-router.get("/",(req,res)=>{
-    try{
+const adminRouter = require("./authAdmin")
 
-    }
-    catch(err){
-        
-    }
-})
+router.use("/admin",adminRouter)
 
 module.exports = router

@@ -10,7 +10,7 @@ const getAdmin = (email)=>{
     return mysql.execute(`SELECT * FROM admin WHERE email = ?`,[email])
 }
 
-const chaeckIfAdminExist = ()=>{
+const checkIfAdminExist = ()=>{
     return mysql.execute(`SELECT * FROM admin`)
 }
 
@@ -27,6 +27,6 @@ module.exports = {
     insertAdmin,
     getAdmin,
     updatePassword,
-    chaeckIfAdminExist,
+    checkIfAdminExist,
     updateAdminDetails
 }

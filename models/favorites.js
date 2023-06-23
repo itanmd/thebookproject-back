@@ -11,7 +11,7 @@ const getFavorite = (idLead,idBook)=>{
 
 const getFavorites = (idlead)=>{
     return mysql.execute(`
-    SELECT idBooks,name,short_description,img_link,price FROM favorites
+    SELECT idBooks,name,short_description,image_link,price FROM favorites
 inner join Books on favorites.idBook = Books.idBooks
 where idlead = ?
 `,[idlead])
