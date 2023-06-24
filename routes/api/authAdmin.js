@@ -4,6 +4,7 @@ const { validateSignUpSchema, validateLogInSchema } = require("../../validation/
 const { createHash, cmpHash } = require('../../config/bcrypt');
 const { generateToken } = require('../../config/jwt');
 const generateRandomHexString = require('../../utils/randomHex');
+const auth = require('../../middleware/admin.auth');
 
 const sendEmail = require('../../config/mailer');
 
@@ -61,6 +62,24 @@ router.post("/sign-in-admin",async(req,res)=>{
         res.status(400).json(err)
     }
 })
+
+
+router.post("/login-by-token",auth,async(req,res)=>{
+     try{
+         const [admin] = await getAdmin(req.userData.email)
+         let token = await generateToken({
+             name: admin[0].name,
+             email: admin[0].email,
+             phoneNumber: admin[0].phone_number,
+             izAdmin:true
+            })
+         res.json({token})
+    }catch(err){
+        res.status(400).end()
+    }
+}) 
+
+
 
 
 
