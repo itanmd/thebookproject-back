@@ -3,8 +3,24 @@ const { checkIfAdminExist, insertAdmin, getAdmin } = require("../../models/admin
 const { validateSignUpSchema, validateLogInSchema } = require("../../validation/admin.validation")
 const { createHash, cmpHash } = require('../../config/bcrypt');
 const { generateToken } = require('../../config/jwt');
+const generateRandomHexString = require('../../utils/randomHex');
 
+const sendEmail = require('../../config/mailer');
 
+router.get("/check-admin",async(req,res)=>{
+    try{
+        const [admin] = await checkIfAdminExist()
+        if(admin[0]){
+            res.json({admin:true})
+        }
+        else{
+            res.json({admin:false})
+        }
+    }
+    catch(err){
+        res.status(400).json(err)
+    }
+})
 
 router.post("/sign-up",async(req,res)=>{
     try{
@@ -45,5 +61,9 @@ router.post("/sign-in-admin",async(req,res)=>{
         res.status(400).json(err)
     }
 })
+
+
+
+
 
 module.exports = router;
