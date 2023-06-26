@@ -99,13 +99,15 @@ router.post("/forgot-password",async(req,res)=>{
             sendEmail({
                 from:process.env.EMAIL,
                 to: admin[0].email,
-                subject: 'Your recovery password link',
+                subject: 'Your password recovery link',
                 html:`
-                 <h1>your recovery link</h1>
+                 <h1>your password recovery link</h1>
                  <a href="${secretUrl}">click here</a>
-                 <b>dont forget it again</b>
-                `
-            })
+                 <br>
+                 <b>Please remember your password for next time :)</b>`
+            }
+
+            )
         res.status(200).json("if the email exist, the mail was sent")
 
         }

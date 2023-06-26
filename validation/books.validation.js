@@ -20,12 +20,17 @@ const priceRole = {
     price:Joi.number().min(Number.MIN_VALUE).max(10000).required()
 }
 
+const categoryIdRole = {
+    description: Joi.number().min(1).max(255).required()
+}
+
 const insertOrUpdateBookSchema = Joi.object({
     ...nameRole,
     ...descriptionRole,
     ...uuidRole,
     ...pagesRole,
-    ...priceRole
+    ...priceRole,
+    ...categoryIdRole
 })
 
 const updatePriceSchema = Joi.object({
