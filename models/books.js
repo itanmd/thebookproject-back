@@ -24,13 +24,11 @@ const updateBook = (
   price,
   categoryId,
   image_link,
-  idBook
+  idbooks
 ) => {
   return mysql.execute(
-    `UPDATE books SET name = ?, description = ?, uuid = ?, pages = ?, price = ?, categoryId, image_link = ? WHERE (idbooks = ?);
-
-`,
-    [name, description, uuid, pages, price, categoryId, image_link, idBook]
+    `UPDATE books SET name = ?, description = ?, uuid = ?, pages = ?, price = ?, categoryId = ?, image_link = ? WHERE idbooks = ?`,
+    [name, description, uuid, pages, price, categoryId, image_link, idbooks]
   );
 };
 
