@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const { checkIfAdminExist, insertAdmin, getAdmin } = require("../../models/admin")
+const { checkIfAdminExist, insertAdmin, getAdmin, updatePassword } = require("../../models/admin")
 const { validateSignUpSchema, validateLogInSchema, validateForgotPasswordSchema, validateRecoveryPasswordSchema, validateUpdateSchema } = require("../../validation/admin.validation")
 const { createHash, cmpHash } = require('../../config/bcrypt');
 const { generateToken } = require('../../config/jwt');
@@ -152,6 +152,7 @@ router.post("/recovery-password/:secretKey/:iv/:encryptedData",async(req,res)=>{
 
     }
     catch(err){
+        console.log(err);
         res.status(400).json(err)
     }
 })
