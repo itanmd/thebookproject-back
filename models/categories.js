@@ -1,11 +1,11 @@
 const mysql = require("./mySqlPool")
 
-const insertCategory = (idcategories,category_name)=>{
-    return mysql.execute(`INSERT INTO categories (idcategories, category_name) VALUES (?,?);
-`,[idcategories,category_name])
+const insertCategory = (category_name)=>{
+    return mysql.execute(`INSERT INTO categories (category_name) VALUES (?);
+`,[category_name])
 }
 
-const updateCategory = (category_name)=>{
+const updateCategory = (category_name, idcategories)=>{
     return mysql.execute(
         `UPDATE categories SET category_name = ? WHERE (idcategories = ?);
 
