@@ -89,7 +89,7 @@ router.post("/forgot-password",async(req,res)=>{
         if(admin[0]){
             const secretKey = generateRandomHexString(8)
             const encryptedData = encrypt(admin[0].email)
-            const secretUrl = `http://localhost:3001/recovery-password/${secretKey}/${encryptedData.iv}/${encryptedData.encryptedData}`
+            const secretUrl = `http://localhost:3000/recovery-password/${secretKey}/${encryptedData.iv}/${encryptedData.encryptedData}`
             const expDate = new Date(Date.now() + 600000)
             const [recovery] =  await checkIfRecovery()
             if(recovery[0]){

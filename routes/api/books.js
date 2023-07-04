@@ -8,14 +8,15 @@ const uploadMulter = multer.createMulter("uploads/", 3000000, {
   type: multer.allowedTypes.img,
 });
 
-router.post("/",authAdmin,uploadMulter.single("prodImg"),async(req,res)=>{
+router.post("/",authAdmin,uploadMulter.single("prudImg"),async(req,res)=>{
     try{
-        delete req.body.prodImg
+        delete req.body.prudImg
         const validateValue = await validateInsertOrUpdateBookSchema(req.body)
         await insertBook(validateValue.name,validateValue.description,validateValue.uuid,validateValue.pages,validateValue.price,validateValue.categoryId,req.file.filename)
         res.json("success")
     }
     catch(err){
+        console.log(err);
         if(req.file){
         fs.unlink(req.file.path)
         }
@@ -38,6 +39,7 @@ router.put("/:idBook",authAdmin,uploadMulter.single("prodImg"),async(req,res)=>{
          res.end()
     }
     catch(err){
+        console.log(err);
         res.status(400).json(err)
     }
     

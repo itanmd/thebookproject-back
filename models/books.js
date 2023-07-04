@@ -66,14 +66,14 @@ const getAllBooks = () => {
 
 const getHomeBooks = () => {
   return mysql.execute(
-    `SELECT * FROM the_book_project.books ORDER BY rand() LIMIT 0,6`
+    `SELECT * FROM the_book_project.books ORDER BY rand() LIMIT 0,9`
   );
 };
 
 const getBook = (id) => {
   return mysql.execute(
     `
-    SELECT name,description,uuid,pages,price,image_link,category_name FROM the_book_project.books
+    SELECT idbooks,name,description,uuid,pages,price,image_link,category_name FROM the_book_project.books
     inner join categories on books.categoryId = categories.idcategories
     where idbooks = ?
     `,
