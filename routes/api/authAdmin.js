@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const { checkIfAdminExist, insertAdmin, getAdmin, updatePassword } = require("../../models/admin")
+const { checkIfAdminExist, insertAdmin, getAdmin, updatePassword, updateAdminDetails } = require("../../models/admin")
 const { validateSignUpSchema, validateLogInSchema, validateForgotPasswordSchema, validateRecoveryPasswordSchema, validateUpdateSchema } = require("../../validation/admin.validation")
 const { createHash, cmpHash } = require('../../config/bcrypt');
 const { generateToken } = require('../../config/jwt');
@@ -171,6 +171,7 @@ router.put("/update-details", auth, async(req,res)=>{
          res.json({token})
     }
     catch(err){
+        console.log(err);
         res.status(400).json(err)
     }
 })

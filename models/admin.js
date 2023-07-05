@@ -20,7 +20,7 @@ const updatePassword = (password,email)=>{
 }
 
 const updateAdminDetails = (name,email,phonenumber)=>{
-    return mysql.execute(`UPDATE admin SET name = ? , email = ? , phone_umber = ? , WHERE email = ?`,[name,email,phonenumber,email])
+    return mysql.execute(`UPDATE admin SET name = ? , email = ? , phone_number = ?  WHERE email = ?`,[name,email,phonenumber,email])
 }
 
 module.exports = {
