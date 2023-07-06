@@ -24,10 +24,10 @@ router.post("/",authAdmin,uploadMulter.single("prudImg"),async(req,res)=>{
     }
 })
 
-router.put("/:idBook",authAdmin,uploadMulter.single("prodImg"),async(req,res)=>{
+router.put("/:idBook",authAdmin,uploadMulter.single("prudImg"),async(req,res)=>{
     try{
-        if(req.body.prodImg){
-         delete req.body.prodImg
+        if(req.body.prudImg){
+         delete req.body.prudImg
         }
          const validateValue = await validateInsertOrUpdateBookSchema(req.body)
          if(req.file){
