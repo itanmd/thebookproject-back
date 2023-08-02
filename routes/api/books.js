@@ -16,7 +16,6 @@ router.post("/",authAdmin,uploadMulter.single("prudImg"),async(req,res)=>{
         res.json("success")
     }
     catch(err){
-        console.log(err);
         if(req.file){
         fs.unlink(req.file.path)
         }
@@ -39,7 +38,6 @@ router.put("/:idBook",authAdmin,uploadMulter.single("prudImg"),async(req,res)=>{
          res.end()
     }
     catch(err){
-        console.log(err);
         res.status(400).json(err)
     }
     
@@ -113,7 +111,6 @@ router.get("/names",async(req,res)=>{
         res.json(names)
     }
     catch(err){
-        console.log(err);
         res.status(400).json(err)
     }
 })

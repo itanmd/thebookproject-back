@@ -37,7 +37,7 @@ router.post("/sign-up",async(req,res)=>{
         res.status(200).json("success")
     }
     catch(err){
-        console.log("err",err);
+     
         res.status(400).json(err)
     }
 });
@@ -152,7 +152,7 @@ router.post("/recovery-password/:secretKey/:iv/:encryptedData",async(req,res)=>{
 
     }
     catch(err){
-        console.log(err);
+    
         res.status(400).json(err)
     }
 })
@@ -171,7 +171,7 @@ router.put("/update-details", auth, async(req,res)=>{
          res.json({token})
     }
     catch(err){
-        console.log(err);
+  
         res.status(400).json(err)
     }
 })

@@ -42,7 +42,7 @@ const updateBookNoImg = (
   idBook
 ) => {
   return mysql.execute(
-    `UPDATE books SET name = ?, description = ?, uuid = ?, pages = ?, price = ?, categoryId = ?,  WHERE (idbooks = ?);
+    `UPDATE books SET name = ?, description = ?, uuid = ?, pages = ?, price = ?, categoryId = ? WHERE idbooks = ?;
 
 `,
     [name, description, uuid, pages, price, categoryId, idBook]
@@ -73,7 +73,7 @@ const getHomeBooks = () => {
 const getBook = (id) => {
   return mysql.execute(
     `
-    SELECT idbooks,name,description,uuid,pages,price,image_link,category_name FROM the_book_project.books
+    SELECT idcategories,idbooks,name,description,uuid,pages,price,image_link,category_name FROM the_book_project.books
     inner join categories on books.categoryId = categories.idcategories
     where idbooks = ?
     `,
